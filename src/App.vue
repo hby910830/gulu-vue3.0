@@ -2,8 +2,14 @@
   <router-view/>
 </template>
 
-<script>
+<script lang="ts">
+import {ref, provide} from 'vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  setup() {
+    const asidesVisible = ref(true)
+    provide('asidesVisible', asidesVisible)
+  }
 }
 </script>
