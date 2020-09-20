@@ -1,8 +1,11 @@
-<template></template>
+<template>
+  <div>hi</div>
+  <h1>hanbaoyi</h1>
+</template>
 
 <script>
 	export default {
-		name: 'Han'
+		name: 'App'
 	}
 </script>
 
