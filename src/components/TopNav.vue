@@ -29,7 +29,10 @@ export default {
   background: pink;
   display: flex;
   padding: 16px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10;
   justify-content: center;
   align-items: center;
@@ -56,8 +59,12 @@ export default {
     display: none;
   }
   @media (max-width: 500px) {
-    > .menu {display: none;}
-    > .logo {margin: 0 auto;}
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
     > .toggleAside {
       display: inline-block;
     }
