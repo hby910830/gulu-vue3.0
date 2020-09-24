@@ -29,11 +29,10 @@
 </template>
 
 <script lang="ts">
-import TopNav from '../components/TopNav.vue'
+import TopNav from '../components/TopNavDemo.vue'
 import {inject, Ref} from 'vue'
 
 export default {
-  name: 'Doc',
   components: {TopNav},
   setup() {
     const asidesVisible = inject<Ref<boolean>>('asidesVisible')

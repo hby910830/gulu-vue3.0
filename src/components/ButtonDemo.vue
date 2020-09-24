@@ -1,12 +1,14 @@
 <template>
   <div>
-    <p>Button 的文档示例</p>
+    <Button>Button</Button>
   </div>
 </template>
 
 <script>
+import Button from '../lib/Button.vue'
+
 export default {
-  name: 'Button'
+  components: {Button}
 }
 </script>
 

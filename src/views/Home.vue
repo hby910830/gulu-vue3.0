@@ -13,9 +13,8 @@
 </template>
 
 <script lang="ts">
-import TopNav from '../components/TopNav.vue'
+import TopNav from '../components/TopNavDemo.vue'
 export default {
-  name: 'Home',
   components: {TopNav}
 }
 </script>
