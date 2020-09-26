@@ -5,7 +5,7 @@
       <div class="gulu-dialog-wrapper">
         <div class="gulu-dialog">
           <header>
-            <slot name="title" />
+            <slot name="title"/>
             <span @click="close" class="gulu-dialog-close"></span>
           </header>
           <main>
@@ -47,7 +47,7 @@ export default {
       context.emit('update:visible', false)
     }
     const cancel = () => {
-      props.cancel && props.cancel() && close()
+      props.cancel && props.cancel()
       close()
     }
     const ok = () => {

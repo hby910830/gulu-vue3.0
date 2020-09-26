@@ -18,7 +18,6 @@
   </Dialog>
   <h1>示例2</h1>
   <Button @click="showDialog">toggle</Button>
-  <Dialog></Dialog>
 </template>
 
 <script lang="ts">
@@ -36,10 +35,10 @@ export default {
     }
     const f1 = () => {
       console.log('ok')
-      return false
+      return true
     }
     const f2 = () => {
-
+      console.log('cancel')
     }
     const showDialog = () => {
       openDialog({
@@ -48,6 +47,7 @@ export default {
         closeOnClickOverlay: false,
         ok(){
           console.log('ok')
+          return true
         },
         cancel(){
           console.log('cancel')
