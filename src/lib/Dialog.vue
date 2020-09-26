@@ -47,7 +47,7 @@ export default {
       context.emit('update:visible', false)
     }
     const cancel = () => {
-      context.emit('cancel')
+      props.cancel && props.cancel() && close()
       close()
     }
     const ok = () => {
