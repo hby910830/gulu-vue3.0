@@ -1,6 +1,12 @@
 <template>
-  <div v-for="(title,index) in titles" :key="index">{{title}}</div>
-  <component v-for="(c,index) in defaults" :is="c" :key="index"></component>
+  <div class="gulu-tabs">
+    <div class="gulu-tabs-nav">
+      <div class="gulu-tabs-nav-item" v-for="(t,index) in titles" :key="index">{{t}}</div>
+    </div>
+    <div class="gulu-tabs-content">
+      <component class="gulu-tabs-content-item" v-for="(c,index) in defaults" :is="c" :key="index" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -11,7 +17,7 @@ export default {
     const defaults = context.slots.default()
     defaults.forEach(tag => {
       if (tag.type !== Tab) {
-        throw new Error('传入的不是Tab标签！')
+        throw new Error('Tabs 子标签必须是 Tab')
       }
     })
     const titles = defaults.map(tags => {
@@ -22,6 +28,29 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+$blue: #40a9ff;
+$color: #333;
+$border-color: #d9d9d9;
+.gulu-tabs {
+  &-nav {
+    display: flex;
+    color: $color;
+    border-bottom: 1px solid $border-color;
+    &-item {
+      padding: 8px 0;
+      margin: 0 16px;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+      &.selected {
+        color: $blue;
+      }
+    }
+  }
+  &-content {
+    padding: 8px 0;
+  }
+}
 </style>
