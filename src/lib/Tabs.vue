@@ -32,7 +32,7 @@ export default {
     const selectedItem = ref<HTMLDivElement>(null)
     const indicator = ref<HTMLDivElement>(null)
     const container = ref<HTMLDivElement>(null)
-    const x = () => {
+    const computedIndicatorWidth = () => {
       const {
         width
       } = selectedItem.value.getBoundingClientRect()
@@ -46,8 +46,8 @@ export default {
       const left = left2 - left1
       indicator.value.style.left = left + 'px'
     }
-    onMounted(x)
-    onUpdated(x)
+    onMounted(computedIndicatorWidth)
+    onUpdated(computedIndicatorWidth)
     const defaults = context.slots.default()
     defaults.forEach((tag) => {
       if (tag.type !== Tab) {
