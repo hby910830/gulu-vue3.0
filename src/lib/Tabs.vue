@@ -1,12 +1,14 @@
-
 <template>
   <div class="gulu-tabs">
     <div class="gulu-tabs-nav" ref="container">
-      <div class="gulu-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (el) navItems[index] = el }" @click="select(t)" :class="{selected: t=== selected}" :key="index">{{t}}</div>
+      <div class="gulu-tabs-nav-item" v-for="(t,index) in titles" :ref="el => { if (t === selected) selectedItem = el }"
+           @click="select(t)" :class="{selected: t=== selected}" :key="index">{{ t }}
+      </div>
       <div class="gulu-tabs-nav-indicator" ref="indicator"></div>
     </div>
     <div class="gulu-tabs-content">
-      <component class="gulu-tabs-content-item" :class="{selected: c.props.title === selected }" v-for="c in defaults" :is="c" />
+      <component class="gulu-tabs-content-item" :class="{selected: c.props.title === selected }" v-for="c in defaults"
+                 :is="c"/>
 
     </div>
   </div>
@@ -19,6 +21,7 @@ import {
   onMounted,
   onUpdated
 } from 'vue'
+
 export default {
   props: {
     selected: {
@@ -26,22 +29,20 @@ export default {
     }
   },
   setup(props, context) {
-    const navItems = ref < HTMLDivElement[] > ([])
-    const indicator = ref < HTMLDivElement > (null)
-    const container = ref < HTMLDivElement > (null)
+    const selectedItem = ref<HTMLDivElement>(null)
+    const indicator = ref<HTMLDivElement>(null)
+    const container = ref<HTMLDivElement>(null)
     const x = () => {
-      const divs = navItems.value
-      const result = divs.filter(div => div.classList.contains('selected'))[0]
       const {
         width
-      } = result.getBoundingClientRect()
+      } = selectedItem.value.getBoundingClientRect()
       indicator.value.style.width = width + 'px'
       const {
         left: left1
       } = container.value.getBoundingClientRect()
       const {
         left: left2
-      } = result.getBoundingClientRect()
+      } = selectedItem.value.getBoundingClientRect()
       const left = left2 - left1
       indicator.value.style.left = left + 'px'
     }
@@ -63,7 +64,7 @@ export default {
       defaults,
       titles,
       select,
-      navItems,
+      selectedItem,
       indicator,
       container
     }
